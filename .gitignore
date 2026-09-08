@@ -1,0 +1,7 @@
+# ⛔ AI Hub 원천·파생물은 이 레포에 절대 들어오지 않는다
+data/
+kit/markers/
+kit/glossary.json
+eval/bench/kodialectbench-v0/items.local.jsonl
+__pycache__/
+*.pyc

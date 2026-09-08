@@ -1,0 +1,21 @@
+{
+ "_comment": [
+  "표지 사전은 AI Hub 라벨 파생물이라 배포하지 않는다. 이용자가 자기 계정의",
+  "데이터로 kit/mine_markers.py 를 돌려 재생성하고, 여기 적힌 해시로 같은",
+  "사전인지 확인한다. 마이닝은 결정론이라 같은 입력이면 바이트까지 같다(실측)."
+ ],
+ "command": "python kit/mine_markers.py --min-n 10 --min-purity 0.70 --min-spec 0.30 --top 20000",
+ "params": {
+  "min_n": 10,
+  "min_purity": 0.7,
+  "min_spec": 0.3,
+  "top": 20000
+ },
+ "sha256": {
+  "chungcheong": "334ffcecb4de112c94c4dfd8b6bb2797851442ec2971417941925c95e361e2d0",
+  "gangwon": "bd6773c974821fbe6aa1fae62e48b5b7bb41f938267e5ecc28283c9356cb0d11",
+  "gyeongsang": "598b7da1038b1512590bcf4d2543000af88b354dac349bc65a1d895ffc2bf2ac",
+  "jeju": "75922d16fb185de02ddd2ff6a54602ee945d450aa15feb25d627173a4ff82034",
+  "jeolla": "a74c6893a0f7316f368f710ea451c833ad4f226e3d00e566de1dec2ea52ca5eb"
+ }
+}

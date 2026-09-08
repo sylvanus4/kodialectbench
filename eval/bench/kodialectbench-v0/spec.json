@@ -1,0 +1,81 @@
+{
+  "name": "KoDialectBench",
+  "version": "0.1.0",
+  "built": "2026-09-07",
+  "seed": 20260907,
+  "license_note": "문항 본문은 포함하지 않는다. AI Hub 이용정책상 미승인 제3자 제공이 금지되므로, 이용자가 자기 계정으로 AI Hub 118~122·71517·71558 을 받아 corpus/aihub_parse*.py 로 파싱한 뒤 `--materialize` 로 채운다.",
+  "split": "test (문서=대화 단위 홀드아웃, blake2b(doc_id)%10000/10000 < 0.2)",
+  "filters": {
+    "min_dialect_eojeol": 2,
+    "min_words": 6,
+    "max_words": 40
+  },
+  "tasks": {
+    "T1_dialect_to_standard": {
+      "input": "dialect",
+      "target": "standard",
+      "metric": [
+        "chrF",
+        "exact_match"
+      ],
+      "note": "방언 이해 축. 의미보존을 직접 잰다."
+    },
+    "T2_region_id": {
+      "input": "dialect",
+      "target": "region",
+      "choices5": [
+        "gangwon",
+        "gyeongsang",
+        "jeolla",
+        "chungcheong",
+        "jeju"
+      ],
+      "choices4_merged": [
+        "gangwon",
+        "gyeongsang",
+        "jeju",
+        "jeolla_chungcheong"
+      ],
+      "metric": [
+        "accuracy"
+      ],
+      "note": "기본은 5지. 4지(전라+충청 병합)는 진단용 보조 지표다. 2026-09-07 이전 표기 '전라·충청 구분 불가'는 데이터 부족이 원인이었고 중·노년층 병합으로 해소됐다(margin −0.227 → +0.622)."
+    },
+    "T3_standard_to_dialect": {
+      "input": "standard + target_region",
+      "target": "dialect",
+      "metric": [
+        "dialectness",
+        "region_match",
+        "adi2",
+        "semantic_preservation"
+      ],
+      "note": "생성 축. ⛔ dialectness 와 semantic_preservation 을 한 점수로 합치지 마라 — 방언성이 오르고 의미가 무너지면 실패다."
+    }
+  },
+  "metric_validity": {
+    "measured_2026_09_07_holdout_n400": {
+      "jeolla": 96.5,
+      "gangwon": 92.5,
+      "chungcheong": 90.5,
+      "gyeongsang": 86.8,
+      "jeju": 86.5
+    },
+    "region_margin": {
+      "jeju": 0.784,
+      "gangwon": 0.705,
+      "jeolla": 0.622,
+      "gyeongsang": 0.587,
+      "chungcheong": 0.56
+    },
+    "caveat": "쌍별 분리도(%). 표지=train 문서 / 채점=test 문서(문서 단위 홀드아웃). 5권역 전부 게이트(70%) 통과, 권역 margin 전부 양수."
+  },
+  "counts": {
+    "gangwon": 200,
+    "gyeongsang": 200,
+    "jeolla": 200,
+    "chungcheong": 200,
+    "jeju": 200
+  },
+  "n_items": 1000
+}
