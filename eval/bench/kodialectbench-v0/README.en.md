@@ -153,8 +153,9 @@ Hub labels. You build it the same way you build the items: run `kit/mine_markers
 download. Mining is deterministic, so the same input yields the same lexicon, and
 `eval/bench/MARKERS.sha256.json` lets you confirm it matches ours.
 
-⇒ As a result **this repository contains no AI Hub derivative at all** — only code, item ids
-and digests for verification.
+⇒ As a result **this repository contains no AI Hub text and no original item identifiers** —
+only code, plus one-way hashes and counts (`items.jsonl`) for verifying the items you regenerate.
+Those hashes and counts are computed from AI Hub data, so they follow the AI Hub terms of use (see License).
 
 ## License
 
